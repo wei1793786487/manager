@@ -2,6 +2,7 @@ package com.hqgml.web;
 
 import cn.hutool.core.date.DateUtil;
 import com.hqgml.domian.SysLog;
+import com.hqgml.service.LogService;
 import com.sun.net.httpserver.HttpsServer;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -42,6 +43,9 @@ public class LogAop {
 
     @Autowired
     private HttpServletRequest request;
+
+    @Autowired
+    private LogService logService;
 
     //前置通知 获取开始时间 执行的类是哪个 执行的是哪个方法
     @Before("execution(* com.hqgml.web.*.*(..))")
@@ -96,9 +100,13 @@ public class LogAop {
         sysLog.setMethod("[类名]" + clazz.getName() + "[方法名]" + method.getName());
         sysLog.setUrl(url);
         sysLog.setUsername(username);
-        String format = DateUtil.formatDateTime(startTime);
-        sysLog.setVisitTimeStr(format);
+        sysLog.setVisitTime(startTime);
+//        String format = DateUtil.formatDateTime(startTime);
+//        sysLog.setVisitTimeStr(format);
 
+//        System.out.println("jjaj");
+
+        logService.setLog(sysLog);
     }
 }
 
