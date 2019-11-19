@@ -1,5 +1,6 @@
 package com.hqgml.domian;
 
+import cn.hutool.core.date.DateUtil;
 import lombok.Data;
 
 import java.util.Date;
@@ -17,4 +18,11 @@ public class SysLog {
     private String url;
     private Long executionTime;
     private String method;
+
+    public String getVisitTimeStr() {
+        if (visitTimeStr==null){
+            visitTimeStr= DateUtil.formatDateTime(visitTime);
+        }
+        return visitTimeStr;
+    }
 }

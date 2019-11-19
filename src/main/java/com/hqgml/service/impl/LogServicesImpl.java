@@ -4,6 +4,9 @@ import com.hqgml.dao.LogDao;
 import com.hqgml.domian.SysLog;
 import com.hqgml.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +25,10 @@ public class LogServicesImpl implements LogService {
 
     @Override
     public List<SysLog> findAllLog() {
-
-        return logDao.findAllLog();
+        SecurityContext context = SecurityContextHolder.getContext();
+        User user= (User) context.getAuthentication().getPrincipal();
+        String username = user.getUsername();
+        return logDao.findAllLog(username);
     }
 
 

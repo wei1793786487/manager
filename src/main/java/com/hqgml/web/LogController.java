@@ -18,14 +18,12 @@ public class LogController {
     @Autowired
     private LogService logService;
 
-
+    @RequestMapping("/findAll.do")
     public ModelAndView findAllLog() {
-
         ModelAndView md = new ModelAndView();
-
         List<SysLog> logs = logService.findAllLog();
         md.addObject("sysLogs", logs);
-        md.setViewName("syslog-list.jsp");
+        md.setViewName("syslog-list");
         return md;
 
     }

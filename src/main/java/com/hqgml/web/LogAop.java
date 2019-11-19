@@ -106,7 +106,11 @@ public class LogAop {
 
 //        System.out.println("jjaj");
 
-        logService.setLog(sysLog);
+     //如果是日志访问类 那么不加
+        if (!url.contains("sysLog")) {
+
+            logService.setLog(sysLog);
+        }
     }
 }
 

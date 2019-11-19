@@ -22,7 +22,7 @@ public class OrdersController {
     private OrdersServices os;
 
     @RequestMapping("/finndAll.do")
-    public ModelAndView findAll(@RequestParam(name = "page", defaultValue = "1") int page, @RequestParam(name = "size", defaultValue = "5") int size) throws Exception {
+    public ModelAndView findAll(@RequestParam(name = "page", defaultValue = "1") Integer page, @RequestParam(name = "size", defaultValue = "5") Integer size) throws Exception {
         ModelAndView md = new ModelAndView();
         List<Orders> allOrders = os.findAllOrders(page, size);
         //pageinfo其实就是一个分页bean
@@ -39,7 +39,6 @@ public class OrdersController {
         md.addObject("orders",od);
         md.setViewName("orders-show");
         return md;
-
     }
 
 }
