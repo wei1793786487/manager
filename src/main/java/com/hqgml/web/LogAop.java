@@ -1,15 +1,12 @@
 package com.hqgml.web;
 
-import cn.hutool.core.date.DateUtil;
 import com.hqgml.domian.SysLog;
 import com.hqgml.service.LogService;
-import com.sun.net.httpserver.HttpsServer;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -17,13 +14,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 /**
- * @data 11/18/2019 11:35 PM
+ * @Date 11/18/2019 11:35 PM
  **/
 
 //方法名	功能
